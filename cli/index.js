@@ -1,6 +1,6 @@
 const { createWriteStream } = require("fs");
 
-const { newPattern, patternGenerator } = require("../src");
+const { newPattern, patternGenerator } = require("../lib");
 
 function getImage(canvas, filepath) {
   const out = createWriteStream(filepath);
@@ -20,6 +20,13 @@ const pattern = newPattern(
   STITCH_LINE
 );
 
-const g = patternGenerator(pattern)(true);
+const argArr = process.argv;
 
-getImage(g.next().value.canvas, __dirname + "/test.png");
+const args = argArr.reduce((obj, el) => {
+  const kv = el.split("=");
+  obj[kv[0]] = kv[1] ?? "";
+  return obj;
+}, {});
+const g = patternGenerator(pattern, !args.hasOwnProperty("--nogrid"))(true);
+const path = args["--output"] ?? __dirname + "/test.png";
+getImage(g.next().value.canvas, path);
