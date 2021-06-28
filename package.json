@@ -1,0 +1,17 @@
+{
+  "name": "koginlib",
+  "version": "0.9.0",
+  "description": "Kogin pattern library",
+  "main": "./lib/index.js",
+  "repository": "git@github.com:longdog/koginlib.git",
+  "author": "Denis Abrosimov",
+  "license": "MIT",
+  "dependencies": {
+    "canvas": "^2.8.0"
+  },
+  "devDependencies": {
+    "@types/node": "^15.12.5",
+    "eslint": "^7.29.0",
+    "jest": "^27.0.5"
+  }
+}
