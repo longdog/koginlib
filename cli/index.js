@@ -27,8 +27,17 @@ const args = argArr.reduce((obj, el) => {
   obj[kv[0]] = kv[1] ?? "";
   return obj;
 }, {});
-if (arg["--pattern"]) {
+
+let canvas = undefined;
+const withGrid = !args.hasOwnProperty("--nogrid");
+if (args["--pattern"]) {
+  const patternFile = readFileSync(args["--pattern"]);
+  console.log(patternFile.toString());
+  canvas = pattern(patternFile.toString(), withGrid).canvas;
+} else {
+  const g = patternGenerator(pattern, withGrid)(true);
+  canvas = g.next().value.canvas;
 }
-const g = patternGenerator(pattern, !args.hasOwnProperty("--nogrid"))(true);
+
 const path = args["--output"] ?? __dirname + "/test.png";
-getImage(g.next().value.canvas, path);
+getImage(canvas, path);
