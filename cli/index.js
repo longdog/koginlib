@@ -1,6 +1,6 @@
 const { createWriteStream, readFileSync } = require("fs");
 
-const { newPattern, patternGenerator } = require("../lib");
+const { patternFactory, patternGenerator } = require("../lib");
 
 function getImage(canvas, filepath) {
   const out = createWriteStream(filepath);
@@ -13,7 +13,7 @@ const DOT = 20;
 const STITCH_LINE = 5;
 const [CANVAS_WIDTH, CANVAS_HEIGHT] = [29 * DOT + DOT / 2, 280.5];
 
-const pattern = newPattern(
+const pattern = patternFactory(
   CANVAS_WIDTH * 2,
   CANVAS_HEIGHT * 2 - DOT,
   DOT,
@@ -32,12 +32,11 @@ let canvas = undefined;
 const withGrid = !args.hasOwnProperty("--nogrid");
 if (args["--pattern"]) {
   const patternFile = readFileSync(args["--pattern"]);
-  console.log(patternFile.toString());
   canvas = pattern(patternFile.toString(), withGrid).canvas;
 } else {
   const g = patternGenerator(pattern, withGrid)(true);
   canvas = g.next().value.canvas;
 }
 
-const path = args["--output"] ?? __dirname + "/test.png";
+const path = args["--output"] ?? __dirname + "/pattern.png";
 getImage(canvas, path);
