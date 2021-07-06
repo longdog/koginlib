@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+        <canvas id="canvas"></canvas>
+        <script src="../dist/koginlib.js"></script>
+        <script>
+            const c = document.getElementById("canvas");
+            const DOT = 20;
+            const STITCH_LINE = 5;
+            const [CANVAS_WIDTH, CANVAS_HEIGHT] = [29 * DOT + DOT / 2, 280.5];
+            c.width = CANVAS_WIDTH * 2;
+            c.height = CANVAS_HEIGHT * 2 - DOT;
+            const pattern = koginlib.patternFactory(
+                CANVAS_WIDTH * 2,
+                CANVAS_HEIGHT * 2 - DOT,
+                DOT,
+                STITCH_LINE,
+                c
+            );
+            const g = koginlib.patternGenerator(pattern, true)(true);
+            g.next();
+        </script>
+</body>
+</html>

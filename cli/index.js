@@ -1,6 +1,6 @@
 const { createWriteStream, readFileSync } = require("fs");
 
-const { patternFactory, patternGenerator } = require("../lib");
+const { patternFactory, patternGenerator } = require("../dist/koginlib");
 
 function getImage(canvas, filepath) {
   const out = createWriteStream(filepath);
@@ -27,7 +27,6 @@ const args = argArr.reduce((obj, el) => {
   obj[kv[0]] = kv[1] ?? "";
   return obj;
 }, {});
-
 let canvas = undefined;
 const withGrid = !args.hasOwnProperty("--nogrid");
 if (args["--pattern"]) {
