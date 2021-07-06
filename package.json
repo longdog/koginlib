@@ -1,6 +1,6 @@
 {
   "name": "koginlib",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Kogin pattern library",
   "main": "./dist/koginlib.js",
   "repository": "git@github.com:longdog/koginlib.git",

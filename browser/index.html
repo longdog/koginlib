@@ -16,12 +16,10 @@
             const [CANVAS_WIDTH, CANVAS_HEIGHT] = [29 * DOT + DOT / 2, 280.5];
             c.width = CANVAS_WIDTH * 2;
             c.height = CANVAS_HEIGHT * 2 - DOT;
-            const pattern = koginlib.patternFactory(
-                CANVAS_WIDTH * 2,
-                CANVAS_HEIGHT * 2 - DOT,
+            const pattern = koginlib.patternBrowserFactory(
+                c,
                 DOT,
-                STITCH_LINE,
-                c
+                STITCH_LINE
             );
             const g = koginlib.patternGenerator(pattern, true)(true);
             g.next();

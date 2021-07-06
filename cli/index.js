@@ -1,6 +1,6 @@
 const { createWriteStream, readFileSync } = require("fs");
 
-const { patternFactory, patternGenerator } = require("../dist/koginlib");
+const { patternNodeFactory, patternGenerator } = require("../dist/koginlib");
 
 function getImage(canvas, filepath) {
   const out = createWriteStream(filepath);
@@ -13,7 +13,7 @@ const DOT = 20;
 const STITCH_LINE = 5;
 const [CANVAS_WIDTH, CANVAS_HEIGHT] = [29 * DOT + DOT / 2, 280.5];
 
-const pattern = patternFactory(
+const pattern = patternNodeFactory(
   CANVAS_WIDTH * 2,
   CANVAS_HEIGHT * 2 - DOT,
   DOT,
