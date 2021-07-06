@@ -1,17 +1,18 @@
 {
   "name": "koginlib",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Kogin pattern library",
   "main": "./dist/koginlib.js",
   "repository": "git@github.com:longdog/koginlib.git",
   "author": "Denis Abrosimov",
   "license": "MIT",
-  "dependencies": {},
+  "dependencies": {
+    "canvas": "^2.8.0"
+  },
   "devDependencies": {
     "@types/node": "^15.12.5",
     "eslint": "^7.29.0",
     "jest": "^27.0.5",
-    "canvas": "^2.8.0",
     "webpack": "^5.42.1",
     "webpack-cli": "^4.7.2"
   },
