@@ -32,15 +32,19 @@ function Canvas() {
 describe("Pattern", () => {
   it("should be init successfuly and has canvas field", () => {
     const canvas = new Canvas();
-    expect(new Pattern(canvas, 1, 1)).toMatchObject({ canvas });
+    expect(new Pattern(canvas, { width: 1, height: 1 })).toMatchObject({
+      canvas,
+    });
   });
   it("should be init successfuly and has ctx field", () => {
     const canvas = new Canvas();
-    expect(new Pattern(canvas, 1, 1)).toMatchObject({ _ctx: canvas.ctx });
+    expect(new Pattern(canvas, { width: 1, height: 1 })).toMatchObject({
+      _ctx: canvas.ctx,
+    });
   });
   it("should throw error if pattern has lines != 9 or 17", () => {
     const canvas = new Canvas();
-    const p = new Pattern(canvas, 1, 1);
+    const p = new Pattern(canvas, { width: 1, height: 1 });
     const wrongPatternString1 = `01`;
     const wrongPatternString2 = `01\n`.repeat(18);
     expect(() => p.draw(wrongPatternString1, true)).toThrow();
@@ -48,7 +52,7 @@ describe("Pattern", () => {
   });
   it("shouldn't throw error if pattern has lines = 9 or 17", () => {
     const canvas = new Canvas();
-    const p = new Pattern(canvas, 1, 1);
+    const p = new Pattern(canvas, { width: 1, height: 1 });
     const wrongPatternString1 = `01\n`.repeat(8);
     const wrongPatternString2 = `01\n`.repeat(16);
     expect(p.draw(wrongPatternString1, true)).toBeInstanceOf(Pattern);
@@ -56,14 +60,14 @@ describe("Pattern", () => {
   });
   it("shouldn't has grid", () => {
     const canvas = new Canvas();
-    const p1 = new Pattern(canvas, 1, 1);
+    const p1 = new Pattern(canvas, { width: 1, height: 1 });
     const wrongPatternString1 = `01\n`.repeat(8);
     p1.draw(wrongPatternString1, false);
     expect(p1._ctx.rect).toBeUndefined();
   });
   it("should has a grid", () => {
     const canvas = new Canvas();
-    const p = new Pattern(canvas, 1, 1);
+    const p = new Pattern(canvas, { width: 1, height: 1 });
     const wrongPatternString1 = `01\n`.repeat(8);
     p.draw(wrongPatternString1, true);
     expect(p._ctx.rect).toHaveLength(4);

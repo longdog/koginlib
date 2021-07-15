@@ -14,10 +14,14 @@ const STITCH_LINE = 5;
 const [CANVAS_WIDTH, CANVAS_HEIGHT] = [29 * DOT + DOT / 2, 280.5];
 
 const pattern = patternNodeFactory(
-  CANVAS_WIDTH * 2,
-  CANVAS_HEIGHT * 2 - DOT,
-  DOT,
-  STITCH_LINE
+  {
+    width: CANVAS_WIDTH * 2,
+    height: CANVAS_HEIGHT * 2 - DOT,
+  },
+  {
+    stitchStep: DOT,
+    stitchWeight: STITCH_LINE,
+  }
 );
 
 const argArr = process.argv;
